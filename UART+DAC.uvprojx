@@ -498,9 +498,14 @@
               <FilePath>.\uart.c</FilePath>
             </File>
             <File>
-              <FileName>uart.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\uart.h</FilePath>
+              <FileName>dac.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\dac.c</FilePath>
+            </File>
+            <File>
+              <FileName>interrupts.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\interrupts.c</FilePath>
             </File>
           </Files>
         </Group>
