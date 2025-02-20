@@ -5,6 +5,7 @@
 #include <SEGGER_RTT.h>
 #include <SEGGER_RTT_Conf.h>
 #include "vars_and_const.h"
+#include "clock.h"
 
 /* definitions of variables */
 
@@ -38,25 +39,7 @@ void UART1_IRQHandler(void)
 /* Main program */
 int main(void)
 {
-    RST_CLK_DeInit();
-
-    /* Enable HSE clock */
-    RST_CLK_HSEconfig(RST_CLK_HSE_ON);
-    /* Wait HSE ready */
-    while(RST_CLK_HSEstatus() == ERROR) {}
-    /* Select HSE as CPU_C1 source */
-    RST_CLK_CPUclkSelectionC1(RST_CLK_CPU_C1srcHSEdiv1);
-    /* Select CPU_C1 as CPU_C2 source */
-    RST_CLK_CPU_PLLuse(DISABLE);
-    /* Select CPU_C2 as CPU_C3 source */
-    RST_CLK_CPUclkSelection(RST_CLK_CPUclkCPU_C3);
-
-    SystemCoreClockUpdate();
-
-    /* Enables peripheral clocks */
-    RST_CLK_PCLKcmd((RST_CLK_PCLK_PORTB |RST_CLK_PCLK_UART1 
-			|RST_CLK_PCLK_DAC |RST_CLK_PCLK_PORTE), ENABLE);
-
+		clock_ini();
     PORT_DeInit(MDR_PORTB);
     PORT_DeInit(MDR_PORTD);
 		PORT_DeInit(MDR_PORTE);
