@@ -478,14 +478,9 @@
           <GroupName>libs</GroupName>
           <Files>
             <File>
-              <FileName>Clock.c</FileName>
+              <FileName>vars_and_const.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Clock.c</FilePath>
-            </File>
-            <File>
-              <FileName>Clock.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Clock.h</FilePath>
+              <FilePath>.\vars_and_const.c</FilePath>
             </File>
           </Files>
         </Group>

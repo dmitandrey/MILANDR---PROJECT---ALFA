@@ -1,18 +1,12 @@
-#include "MDR32FxQI_uart.h"
-#include "MDR32FxQI_port.h"
-#include "MDR32FxQI_rst_clk.h"
+#include <MDR32FxQI_uart.h>
+#include <MDR32FxQI_port.h>
+#include <MDR32FxQI_rst_clk.h>
 #include <MDR32FxQI_dac.h>
 #include <SEGGER_RTT.h>
 #include <SEGGER_RTT_Conf.h>
-#include "Clock.h"
+#include "vars_and_const.h"
 
 /* definitions of variables */
-static PORT_InitTypeDef PortInit;
-static UART_InitTypeDef UART_InitStructure;
-static uint16_t DataByte=0x00;
-static uint16_t lvl;
-static uint8_t E = 69;
-static uint8_t R = 82;
 
 
 /* Interrupt function*/
