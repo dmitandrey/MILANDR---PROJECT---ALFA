@@ -6,6 +6,7 @@
 #include <SEGGER_RTT_Conf.h>
 #include "vars_and_const.h"
 #include "clock.h"
+#include "port.h"
 
 /* definitions of variables */
 
@@ -40,29 +41,8 @@ void UART1_IRQHandler(void)
 int main(void)
 {
 		clock_ini();
-    PORT_DeInit(MDR_PORTB);
-    PORT_DeInit(MDR_PORTD);
-		PORT_DeInit(MDR_PORTE);
-
-    /* Configure PORTB pins 5 (UART1_TX) as output */
-    PORT_StructInit(&PortInit);
-    PortInit.PORT_Pin   = PORT_Pin_5;
-    PortInit.PORT_FUNC  = PORT_FUNC_ALTER;
-    PortInit.PORT_SPEED = PORT_SPEED_MAXFAST;
-    PortInit.PORT_MODE  = PORT_MODE_DIGITAL;
-    PortInit.PORT_OE    = PORT_OE_OUT;
-    PORT_Init(MDR_PORTB, &PortInit);
-	
-    /* Configure PORTB pins 6 (UART1_RX) as input */
-    PortInit.PORT_Pin = PORT_Pin_6;
-    PortInit.PORT_OE  = PORT_OE_IN;
-    PORT_Init(MDR_PORTB, &PortInit);
-		
-		/* Configure PORTE pins 0 (DAC) as output */
-		PortInit.PORT_Pin  = PORT_Pin_0;
-		PortInit.PORT_OE   = PORT_OE_OUT;
-		PortInit.PORT_MODE = PORT_MODE_ANALOG;
-		PORT_Init(MDR_PORTE, &PortInit);
+    
+		port_ini();
 
 		/* Configure UART */
 
