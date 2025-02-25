@@ -19,6 +19,12 @@ void clock_ini(void){
     SystemCoreClockUpdate();
 
     /* Enables peripheral clocks */
-    RST_CLK_PCLKcmd((RST_CLK_PCLK_PORTB |RST_CLK_PCLK_UART1 
-			|RST_CLK_PCLK_DAC |RST_CLK_PCLK_PORTE), ENABLE);
+    RST_CLK_PCLKcmd((	RST_CLK_PCLK_PORTB|
+											RST_CLK_PCLK_PORTA|
+											RST_CLK_PCLK_PORTC|
+											RST_CLK_PCLK_PORTF|
+											RST_CLK_PCLK_PORTE|
+											RST_CLK_PCLK_UART1|
+											RST_CLK_PCLK_DAC  	
+										), ENABLE);
 }

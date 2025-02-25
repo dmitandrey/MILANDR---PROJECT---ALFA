@@ -11,3 +11,4 @@ uint16_t lvl = 0;
 /* definition of stucts*/
 PORT_InitTypeDef PortInit;
 UART_InitTypeDef UART_InitStructure;
+PORT_InitTypeDef PortLCD_Init;

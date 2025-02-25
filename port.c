@@ -5,7 +5,6 @@
 /* definition of PORTs initialization*/
 void port_ini(void){
 		PORT_DeInit(MDR_PORTB);
-    PORT_DeInit(MDR_PORTD);
 		PORT_DeInit(MDR_PORTE);
 
     /* Configure PORTB pins 5 (UART1_TX) as output */

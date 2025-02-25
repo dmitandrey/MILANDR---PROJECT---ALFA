@@ -15,5 +15,6 @@ extern uint16_t DataByte;
 /* declaration of stucts*/
 extern PORT_InitTypeDef PortInit;
 extern UART_InitTypeDef UART_InitStructure;
+extern PORT_InitTypeDef PortLCD_Init;
 
 #endif
