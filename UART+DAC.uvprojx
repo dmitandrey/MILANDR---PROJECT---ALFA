@@ -523,11 +523,6 @@
               <FilePath>.\LCD.c</FilePath>
             </File>
             <File>
-              <FileName>port_LCD.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\port_LCD.h</FilePath>
-            </File>
-            <File>
               <FileName>port_LCD.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\port_LCD.c</FilePath>

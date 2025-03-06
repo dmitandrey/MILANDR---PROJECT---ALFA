@@ -17,4 +17,7 @@ extern PORT_InitTypeDef PortInit;
 extern UART_InitTypeDef UART_InitStructure;
 extern PORT_InitTypeDef PortLCD_Init;
 
+extern const unsigned char Font_OCR_A[];
+extern const unsigned char Logo[];
+
 #endif
