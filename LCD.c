@@ -46,15 +46,19 @@ void LCD_ini(void)
 	simpleDelay(100);
 	
 	MDR_PORTB->RXTX |= 0x200; // LCD RES=1  (set PB9)
-	simpleDelay(1000);
+	simpleDelay(5000);
 
 	COMMAND;
 	LCD_L();
-	LCD_SendData(0x3F); // COMAND Display ON (LEFT SIDE)
-	simpleDelay(100);
+	LCD_SendData(0x3E);// COMAND Display OFF (LEFT SIDE)
+	simpleDelay(5000);
+	LCD_SendData(0x3F);	// COMAND Display ON (LEFT SIDE)
+	simpleDelay(5000);
 	LCD_R();
+	LCD_SendData(0x3E);// COMAND Display OFF (RIGHT SIDE)
+	simpleDelay(5000);
 	LCD_SendData(0x3F); // COMAND Display ON (RIGHT SIDE)
-	simpleDelay(100);
+	simpleDelay(5000);
 }
 void LCD_SetPosition(const char page, const char address)
 {
@@ -106,27 +110,6 @@ void LCD_PrintLine(const char lineNumber, const char offset, const char interval
 			++x;
 		}
 		npos++;
-	}
-}
-void DisplayDrawLogo(void)
-{
-
-	for (unsigned char y = 0; y < 8; ++y)
-	{
-		LCD_L();
-		LCD_SetPosition(y, 0);
-		unsigned char p = 0;
-
-		for (unsigned char x = 0; x < 128; ++x)
-		{
-			if (x > 63 & p == 0)
-			{
-				LCD_R();
-				LCD_SetPosition(y, 0);
-				p = 1;
-			}
-			LCD_SendData(Logo[y * 128 + x]);
-		}
 	}
 }
 

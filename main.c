@@ -23,9 +23,14 @@ int main(void)
 	
 		LCD_ini();
 	
+		LCD_SetPosition(0, 0);
+	
 		LCD_WriteSymbol('A');
+	
+		LCD_PrintLine(0, 0, 1, "TEST");
 		
 		LCD_PrintLine(2, 10, 1, "HELLO");
+		
 	
     while(1)
     {
