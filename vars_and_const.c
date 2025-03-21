@@ -5,13 +5,46 @@ const uint8_t E = 69;
 const uint8_t R = 82;
 
 /* definition of variable for main*/
-uint16_t DataByte = 0;
 uint16_t lvl = 0;
+uint8_t X = 0;
+uint8_t Y = 0;
+uint8_t Z = 0;
 
 /* definition of stucts*/
 PORT_InitTypeDef PortInit;
 UART_InitTypeDef UART_InitStructure;
 PORT_InitTypeDef PortLCD_Init;
+
+int holdbuttons = 0;
+
+char* u8_to_str(uint8_t value, char* buffer)
+{
+    char temp[4];
+    int i = 0, j = 0;
+
+    // Handle zero explicitly
+    if (value == 0) {
+        buffer[0] = '0';
+        buffer[1] = '\0';
+        return buffer;
+    }
+
+    // Convert digits to characters in reverse order
+    while (value > 0) {
+        temp[i++] = (value % 10) + '0';
+        value /= 10;
+    }
+
+    // Reverse the string
+    for (j = 0; j < i; ++j) {
+        buffer[j] = temp[i - j - 1];
+    }
+    buffer[i] = '\0';
+
+    return buffer;
+}
+
+
 
 const unsigned char Font_OCR_A[] =  {
         0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  // Code for char  
