@@ -5,10 +5,22 @@ const uint8_t E = 69;
 const uint8_t R = 82;
 
 /* definition of variable for main*/
+
 uint16_t lvl = 0;
-uint8_t X = 0;
-uint8_t Y = 0;
-uint8_t Z = 0;
+uint8_t X ;
+uint8_t Y ;
+uint8_t Z ;
+uint8_t user_id;
+
+uint32_t USER_ID_ADRESS =  0x08000000;
+uint32_t VALUE_X1_ADRESS = 0x08000008;
+uint32_t VALUE_Y1_ADRESS = 0x0800000C;
+uint32_t VALUE_Z1_ADRESS = 0x08000010;
+uint32_t VALUE_X2_ADRESS = 0x08000014;
+uint32_t VALUE_Y2_ADRESS = 0x08000018;
+uint32_t VALUE_Z2_ADRESS = 0x0800001C;
+char buffer[4];
+
 
 /* definition of stucts*/
 PORT_InitTypeDef PortInit;

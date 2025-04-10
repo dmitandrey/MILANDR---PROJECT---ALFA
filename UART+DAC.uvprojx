@@ -550,6 +550,21 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>EEPROM</GroupName>
+          <Files>
+            <File>
+              <FileName>params.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\params.c</FilePath>
+            </File>
+            <File>
+              <FileName>params.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\params.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>::Device</GroupName>
         </Group>
         <Group>
@@ -574,6 +589,12 @@
           <targetInfo name="Target 1"/>
         </targetInfos>
       </component>
+      <component Cclass="Drivers" Cgroup="EEPROM" Cvendor="Milandr" Cversion="2.2.0i" condition="CON_MDR32FxQI_EEPROM_DENPENDENCIES_UTILS">
+        <package name="MDR32FxQI" schemaVersion="1.2" url="" vendor="Milandr" version="1.2.0"/>
+        <targetInfos>
+          <targetInfo name="Target 1"/>
+        </targetInfos>
+      </component>
       <component Cclass="Drivers" Cgroup="PORT" Cvendor="Milandr" Cversion="2.1.0i" condition="CON_MDR32FxQI">
         <package name="MDR32FxQI" schemaVersion="1.2" url="" vendor="Milandr" version="1.2.0"/>
         <targetInfos>
@@ -587,6 +608,12 @@
         </targetInfos>
       </component>
       <component Cclass="Drivers" Cgroup="UART" Cvendor="Milandr" Cversion="2.2.0i" condition="CON_MDR32FxQI_UART_DENPENDENCIES_RST_CLK">
+        <package name="MDR32FxQI" schemaVersion="1.2" url="" vendor="Milandr" version="1.2.0"/>
+        <targetInfos>
+          <targetInfo name="Target 1"/>
+        </targetInfos>
+      </component>
+      <component Cclass="Drivers" Cgroup="UTILS" Cvendor="Milandr" Cversion="1.1.0i" condition="CON_MDR32FxQI_UTILS_DENPENDENCIES_RST_CLK">
         <package name="MDR32FxQI" schemaVersion="1.2" url="" vendor="Milandr" version="1.2.0"/>
         <targetInfos>
           <targetInfo name="Target 1"/>

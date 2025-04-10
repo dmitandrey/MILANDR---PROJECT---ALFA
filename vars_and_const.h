@@ -4,6 +4,7 @@
 #include "MDR32FxQI_port.h"
 #include "MDR32FxQI_uart.h"
 
+
 /* declaration of const for ASCII */
 extern const uint8_t E;
 extern const uint8_t R;
@@ -12,7 +13,16 @@ extern const uint8_t R;
 extern uint8_t X;
 extern uint8_t Y;
 extern uint8_t Z;
+extern uint8_t user_id;
 extern uint16_t lvl;
+extern uint32_t USER_ID_ADRESS;
+extern uint32_t VALUE_X1_ADRESS;
+extern uint32_t VALUE_Y1_ADRESS;
+extern uint32_t VALUE_Z1_ADRESS;
+extern uint32_t VALUE_X2_ADRESS;
+extern uint32_t VALUE_Y2_ADRESS;
+extern uint32_t VALUE_Z2_ADRESS;
+extern char buffer[4];
 
 /* declaration of stucts*/
 extern PORT_InitTypeDef PortInit;
