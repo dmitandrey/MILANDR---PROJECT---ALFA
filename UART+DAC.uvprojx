@@ -592,7 +592,11 @@
       <component Cclass="Drivers" Cgroup="EEPROM" Cvendor="Milandr" Cversion="2.2.0i" condition="CON_MDR32FxQI_EEPROM_DENPENDENCIES_UTILS">
         <package name="MDR32FxQI" schemaVersion="1.2" url="" vendor="Milandr" version="1.2.0"/>
         <targetInfos>
-          <targetInfo name="Target 1"/>
+          <targetInfo name="Target 1">
+            <mem>
+              <RVCTCodeConst>9</RVCTCodeConst>
+            </mem>
+          </targetInfo>
         </targetInfos>
       </component>
       <component Cclass="Drivers" Cgroup="PORT" Cvendor="Milandr" Cversion="2.1.0i" condition="CON_MDR32FxQI">
@@ -616,7 +620,11 @@
       <component Cclass="Drivers" Cgroup="UTILS" Cvendor="Milandr" Cversion="1.1.0i" condition="CON_MDR32FxQI_UTILS_DENPENDENCIES_RST_CLK">
         <package name="MDR32FxQI" schemaVersion="1.2" url="" vendor="Milandr" version="1.2.0"/>
         <targetInfos>
-          <targetInfo name="Target 1"/>
+          <targetInfo name="Target 1">
+            <mem>
+              <RVCTCodeConst>9</RVCTCodeConst>
+            </mem>
+          </targetInfo>
         </targetInfos>
       </component>
     </components>

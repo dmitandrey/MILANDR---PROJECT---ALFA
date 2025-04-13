@@ -9,6 +9,8 @@
 #include "interrupts.h"
 #include "params.h"
 #include "MDR32FxQI_eeprom.h"
+#include <SEGGER_RTT.h>
+#include <SEGGER_RTT_Conf.h>
 
 /* Interrupt function*/
 /*void UART1_IRQHandler();*/
@@ -52,7 +54,7 @@ int main(void)
 		LCD_PrintLine(3, 31, 1,u8_to_str(Z,buffer));
 		
 		mode = FIRST;
-		conf = ACCEPT;
+		conf = CONF;
 		
     while(1)
     {
@@ -80,7 +82,10 @@ int main(void)
 					break;
 					
 				case ACCEPT:
-						voltage_id.X = 0;
+						voltage_id.X = X;
+						voltage_id.Y = Y;
+						voltage_id.Z = Z;
+						SEGGER_RTT_printf(0,"ACCEPT: X,Y,Z: %d\n",X,Y,Z);
 						voltage_id.user_id = 1;
 						Save_to_EEPROM(voltage_id);
 						LCD_PrintLine(4, 10, 1, "^");
@@ -113,8 +118,9 @@ int main(void)
 					break;
 						
 					case ACCEPT:
-							voltage_id.Y = 0;
-							voltage_id.user_id = 1;
+							voltage_id.X = X;
+							voltage_id.Y = Y;
+							voltage_id.Z = Z;
 							Save_to_EEPROM(voltage_id);
 							DAC2_SetData(DataByte(X,Y,Z));
 							LCD_PrintLine(4, 24, 1, "^");
@@ -143,7 +149,9 @@ int main(void)
 					break;
 						
 					case ACCEPT:
-							voltage_id.Z = 0;
+							voltage_id.X = X;
+							voltage_id.Y = Y;
+							voltage_id.Z = Z;
 							voltage_id.user_id = 1;
 							Save_to_EEPROM(voltage_id);
 							DAC2_SetData(DataByte(X,Y,Z));
