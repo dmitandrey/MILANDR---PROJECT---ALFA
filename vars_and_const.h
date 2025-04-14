@@ -10,10 +10,12 @@ extern const uint8_t E;
 extern const uint8_t R;
 
 /* declaration of variable for DAC*/
+
 extern uint8_t X;
 extern uint8_t Y;
 extern uint8_t Z;
 extern uint8_t user_id;
+extern uint8_t id;
 extern uint16_t lvl;
 extern uint32_t USER_ID_ADRESS;
 extern uint32_t VALUE_X1_ADRESS;
@@ -22,6 +24,9 @@ extern uint32_t VALUE_Z1_ADRESS;
 extern uint32_t VALUE_X2_ADRESS;
 extern uint32_t VALUE_Y2_ADRESS;
 extern uint32_t VALUE_Z2_ADRESS;
+extern uint32_t ZERO;
+extern uint32_t ONE;
+extern uint32_t TWO;
 extern char buffer[4];
 
 /* declaration of stucts*/

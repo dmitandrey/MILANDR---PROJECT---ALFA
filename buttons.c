@@ -1,9 +1,18 @@
 #include "buttons.h"
 #include "vars_and_const.h"
 #include "LCD.h"
+#include "params.h"
+#include "MDR32FxQI_dac.h"
+#include "dac.h"
+#include "MDR32FxQI_eeprom.h"
+#include "stdint.h"
 ////////////////////////
 Mode mode;
 Conf conf;
+
+#define EEPROM_BASE_ADDRESS_0  0x08007000
+#define EEPROM_BASE_ADDRESS_1  0x08008000
+#define EEPROM_BASE_ADDRESS_2  0x08009000
 
 void ButtonsHold(void) // the "rattle" exclusion function
 {
@@ -71,7 +80,28 @@ void ButtonsPolling(void)
 			}
 		if (conf == ACCEPT)
 		{
-			
+			if (user_id == 1)
+			{
+				user_id = 2;
+				__set_FAULTMASK(1);
+				EEPROM_ErasePage(EEPROM_BASE_ADDRESS_0, EEPROM_Main_Bank_Select);
+				simpleDelay(100000);
+				EEPROM_ProgramByte(USER_ID_ADRESS, EEPROM_Main_Bank_Select, user_id);
+				__set_FAULTMASK(0);
+				LCD_PrintLine(1, 101, 1, u8_to_str(user_id,buffer));
+				
+				voltage_id = Load_from_EEPROM();
+		
+				X = voltage_id.X;
+				Y = voltage_id.Y;
+				Z = voltage_id.Z;
+				
+				DAC2_SetData(DataByte(X,Y,Z));
+				LCD_PrintLine(3, 10, 1,u8_to_str(X,buffer));
+				LCD_PrintLine(3, 17, 1,".");
+				LCD_PrintLine(3, 24, 1,u8_to_str(Y,buffer));
+				LCD_PrintLine(3, 31, 1,u8_to_str(Z,buffer));
+			}			
 		}
 		ButtonsHold();
 		return;
@@ -118,6 +148,30 @@ void ButtonsPolling(void)
 									LCD_PrintLine(3, 31, 1,u8_to_str(Z,buffer));
 								}
 				}
+		if (conf == ACCEPT)
+		{
+			if (user_id == 2)
+			{
+				user_id = 1;
+				__set_FAULTMASK(1);
+				EEPROM_ErasePage(EEPROM_BASE_ADDRESS_0, EEPROM_Main_Bank_Select);
+				simpleDelay(100000);
+				EEPROM_ProgramByte(USER_ID_ADRESS, EEPROM_Main_Bank_Select, user_id);
+				__set_FAULTMASK(0);
+				LCD_PrintLine(1, 101, 1, u8_to_str(user_id,buffer));
+				voltage_id = Load_from_EEPROM();
+		
+				X = voltage_id.X;
+				Y = voltage_id.Y;
+				Z = voltage_id.Z;
+				
+				DAC2_SetData(DataByte(X,Y,Z));
+				LCD_PrintLine(3, 10, 1,u8_to_str(X,buffer));
+				LCD_PrintLine(3, 17, 1,".");
+				LCD_PrintLine(3, 24, 1,u8_to_str(Y,buffer));
+				LCD_PrintLine(3, 31, 1,u8_to_str(Z,buffer));
+			}
+		}
 		ButtonsHold();
 		return;
 	}
@@ -126,10 +180,18 @@ void ButtonsPolling(void)
 	{	if (conf == ACCEPT)
 		{
 			conf = CONF;
+			LCD_PrintLine(2, 101, 1, " ");
 		}
 		else if (conf == CONF)
 		{
 			conf = ACCEPT;
+			LCD_PrintLine(2, 101, 1, "^");
+			voltage_id.X = X;
+			voltage_id.Y = Y;
+			voltage_id.Z = Z;
+			voltage_id.user_id = user_id;
+			Save_to_EEPROM(voltage_id);
+			DAC2_SetData(DataByte(X,Y,Z));
 		}
 		
 		ButtonsHold();

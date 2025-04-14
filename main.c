@@ -36,9 +36,9 @@ int main(void)
 		LCD_Clear();
 	
 		LCD_SetPosition(0, 0);
-		
-		LCD_PrintLine(2, 10, 1, "CURRENT VOLTAGE:");
-		
+		LCD_PrintLine(1, 10, 1, "CURRENT USER:");
+		LCD_PrintLine(2, 10, 1, "CURRENT V:");
+	
 		voltage_id = Load_from_EEPROM();
 		
 		X = voltage_id.X;
@@ -47,7 +47,7 @@ int main(void)
 		user_id = voltage_id.user_id;
 		
 		DAC2_SetData(DataByte(X,Y,Z));
-	
+		LCD_PrintLine(1, 101, 1, u8_to_str(user_id,buffer));
 		LCD_PrintLine(3, 10, 1,u8_to_str(X,buffer));
 		LCD_PrintLine(3, 17, 1,".");
 		LCD_PrintLine(3, 24, 1,u8_to_str(Y,buffer));
@@ -82,15 +82,7 @@ int main(void)
 					break;
 					
 				case ACCEPT:
-						voltage_id.X = X;
-						voltage_id.Y = Y;
-						voltage_id.Z = Z;
-						SEGGER_RTT_printf(0,"ACCEPT: X,Y,Z: %d\n",X,Y,Z);
-						voltage_id.user_id = 1;
-						Save_to_EEPROM(voltage_id);
-						LCD_PrintLine(4, 10, 1, "^");
-						DAC2_SetData(DataByte(X,Y,Z));
-						
+					LCD_PrintLine(4, 10, 1, "^");
 				break;
 					
 				}
@@ -118,11 +110,6 @@ int main(void)
 					break;
 						
 					case ACCEPT:
-							voltage_id.X = X;
-							voltage_id.Y = Y;
-							voltage_id.Z = Z;
-							Save_to_EEPROM(voltage_id);
-							DAC2_SetData(DataByte(X,Y,Z));
 							LCD_PrintLine(4, 24, 1, "^");
 							
 					break;
@@ -149,12 +136,6 @@ int main(void)
 					break;
 						
 					case ACCEPT:
-							voltage_id.X = X;
-							voltage_id.Y = Y;
-							voltage_id.Z = Z;
-							voltage_id.user_id = 1;
-							Save_to_EEPROM(voltage_id);
-							DAC2_SetData(DataByte(X,Y,Z));
 							LCD_PrintLine(4, 31, 1, "^");
 					
 					break;

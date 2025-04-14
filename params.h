@@ -14,3 +14,5 @@ VOLTAGE_USERID Load_from_EEPROM();
 
 void Save_to_EEPROM(VOLTAGE_USERID);
 
+void ini_EEPROM();
+
