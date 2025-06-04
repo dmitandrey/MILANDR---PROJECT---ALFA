@@ -6,39 +6,17 @@
 void port_ini(void){
 		PORT_DeInit(MDR_PORTB);
 		PORT_DeInit(MDR_PORTE);
-
-    /* Configure PORTB pins 5 (UART1_TX) as output */
-    PORT_StructInit(&PortInit);
-    PortInit.PORT_Pin   = PORT_Pin_5;
-    PortInit.PORT_FUNC  = PORT_FUNC_ALTER;
-    PortInit.PORT_SPEED = PORT_SPEED_MAXFAST;
-    PortInit.PORT_MODE  = PORT_MODE_DIGITAL;
-    PortInit.PORT_OE    = PORT_OE_OUT;
-    PORT_Init(MDR_PORTB, &PortInit);
-	
-    /* Configure PORTB pins 6 for RIGHT BUTTON  */
-    PortInit.PORT_Pin = PORT_Pin_6;
-    PortInit.PORT_OE  = PORT_OE_IN;
-    PORT_Init(MDR_PORTB, &PortInit);
-	
+		PORT_DeInit(MDR_PORTA);
+		PORT_DeInit(MDR_PORTF);
+		PORT_DeInit(MDR_PORTC);
+		
 		/* Configure PORTE pins 3 for LEFT BUTTON  */
     PortInit.PORT_Pin = PORT_Pin_3;
-    PortInit.PORT_OE  = PORT_OE_IN;
+		PortInit.PORT_MODE  = PORT_MODE_DIGITAL;
     PORT_Init(MDR_PORTE, &PortInit);
-		
-		/* Configure PORTE pins 3 for CENTER BUTTON  */
-		PortInit.PORT_Pin = PORT_Pin_2;
-    PortInit.PORT_OE  = PORT_OE_IN;
-    PORT_Init(MDR_PORTC, &PortInit);
-				/* Configure PORTE pins 3 for CENTER BUTTON  */
-		PortInit.PORT_Pin = PORT_Pin_2;
-    PortInit.PORT_OE  = PORT_OE_IN;
-    PORT_Init(MDR_PORTC, &PortInit);
 
-		/*Configure PORTE pins 1 for UP BUTTON  */
+		/*Configure PORTE pins 1 for DOWN BUTTON  */
 		PortInit.PORT_Pin = PORT_Pin_1;
-		PortInit.PORT_FUNC  = PORT_FUNC_MAIN;
-    PortInit.PORT_OE  = PORT_OE_IN;
     PORT_Init(MDR_PORTE, &PortInit);
 		
 		/* Configure PORTE pins 0 (DAC) as output */

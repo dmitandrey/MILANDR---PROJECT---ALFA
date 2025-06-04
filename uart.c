@@ -1,6 +1,8 @@
 #include "uart.h"
 #include <MDR32FxQI_uart.h>
 #include "vars_and_const.h"
+#include <stdio.h>
+#include <stdint.h>
 
 /* definition of UART initialization*/
 void uart_ini(void){
@@ -12,13 +14,14 @@ void uart_ini(void){
     UART_BRGInit(MDR_UART1, UART_HCLKdiv1);
 
     NVIC_EnableIRQ(UART1_IRQn);
+		NVIC_ClearPendingIRQ(UART1_IRQn);
 
     /* Initialize UART_InitStructure */
     UART_InitStructure.UART_BaudRate            = 115200;
     UART_InitStructure.UART_WordLength          = UART_WordLength8b;
     UART_InitStructure.UART_StopBits            = UART_StopBits1;
     UART_InitStructure.UART_Parity              = UART_Parity_No;
-    UART_InitStructure.UART_FIFOMode            = UART_FIFO_OFF;
+    UART_InitStructure.UART_FIFOMode            = UART_FIFO_ON;
     UART_InitStructure.UART_HardwareFlowControl = (UART_HardwareFlowControl_RXE |
                                                     UART_HardwareFlowControl_TXE);
 
@@ -33,4 +36,18 @@ void uart_ini(void){
 
     /* Enables UART2 peripheral */
     UART_Cmd(MDR_UART1, ENABLE);
+}
+
+void build_json(void) 
+{
+    snprintf((char*)data, sizeof(data), 
+        "{\"user\": \"%d\", \"Volt\": %d.%d%d}\r\n",user_id, X,Y,Z);
+}
+
+void UART1_SendDataFIFO(uint8_t *data, uint16_t length) 
+{
+    for (uint16_t i = 0; i < length; i++) {
+        while (UART_GetFlagStatus(MDR_UART1, UART_FLAG_TXFF) == SET);
+        UART_SendData(MDR_UART1, data[i]);
+    }
 }

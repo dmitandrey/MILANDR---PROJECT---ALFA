@@ -27,6 +27,7 @@ extern uint32_t VALUE_Z2_ADRESS;
 extern uint32_t ZERO;
 extern uint32_t ONE;
 extern uint32_t TWO;
+extern uint8_t data[30];  
 extern char buffer[4];
 
 /* declaration of stucts*/

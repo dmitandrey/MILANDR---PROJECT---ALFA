@@ -30,7 +30,9 @@ uint32_t VALUE_X2_ADRESS  = EEPROM_BASE_ADDRESS_2 + 0x04;  // 0x08008010
 uint32_t VALUE_Y2_ADRESS  = EEPROM_BASE_ADDRESS_2 + 0x08;  // 0x08008014
 uint32_t VALUE_Z2_ADRESS  = EEPROM_BASE_ADDRESS_2 + 0x0C;  // 0x08008018
 
+//buffers
 char buffer[4];
+uint8_t data[30];  //uart
 
 
 /* definition of stucts*/

@@ -12,24 +12,36 @@
 #include <SEGGER_RTT.h>
 #include <SEGGER_RTT_Conf.h>
 
+#include <stdio.h>
+#include <stdint.h>
+
+
 /* Interrupt function*/
-/*void UART1_IRQHandler();*/
+void UART1_IRQHandler(void){
+    if (UART_GetITStatusMasked(MDR_UART1, UART_IT_RX) == SET)
+    {		
+				uint8_t received = UART_ReceiveData(MDR_UART1);
+        UART_ClearITPendingBit(MDR_UART1, UART_IT_RX);
+				build_json();
+				UART1_SendDataFIFO(data, sizeof(data) - 1);
+		}
+}
 
 
 /* Main program */
 int main(void)
 {
-	
 		clock_ini();
     
 		port_ini();
 	
+		port_LCD_ini();
+	
 		SysTickConfig();
-		/*uart_ini();*/
 		
 		dac_ini();
-		
-		port_LCD_ini();
+	
+		uart_ini();
 	
 		LCD_ini();
 		
