@@ -41,7 +41,7 @@ void uart_ini(void){
 void build_json(void) 
 {
     snprintf((char*)data, sizeof(data), 
-        "{\"user\": \"%d\", \"Volt\": %d.%d%d}\r\n",user_id, X,Y,Z);
+        "\r\n{\"user\": \"%d\", \"Volt\": \"%d.%d%d\"}\r\n",user_id, X,Y,Z);
 }
 
 void UART1_SendDataFIFO(uint8_t *data, uint16_t length) 

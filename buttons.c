@@ -6,6 +6,7 @@
 #include "dac.h"
 #include "MDR32FxQI_eeprom.h"
 #include "stdint.h"
+#include "uart.h"
 ////////////////////////
 Mode mode;
 Conf conf;
@@ -81,13 +82,13 @@ void ButtonsPolling(void)
 		if (conf == ACCEPT)
 		{
 			if (user_id == 1)
-			{
-				user_id = 2;
+			{	
 				__set_FAULTMASK(1);
+				user_id = 2;
 				EEPROM_ErasePage(EEPROM_BASE_ADDRESS_0, EEPROM_Main_Bank_Select);
 				simpleDelay(100000);
 				EEPROM_ProgramByte(USER_ID_ADRESS, EEPROM_Main_Bank_Select, user_id);
-				__set_FAULTMASK(0);
+				
 				LCD_PrintLine(1, 101, 1, u8_to_str(user_id,buffer));
 				
 				voltage_id = Load_from_EEPROM();
@@ -95,6 +96,8 @@ void ButtonsPolling(void)
 				X = voltage_id.X;
 				Y = voltage_id.Y;
 				Z = voltage_id.Z;
+				
+				__set_FAULTMASK(0);
 				
 				DAC2_SetData(DataByte(X,Y,Z));
 				LCD_PrintLine(3, 10, 1,u8_to_str(X,buffer));
@@ -152,18 +155,20 @@ void ButtonsPolling(void)
 		{
 			if (user_id == 2)
 			{
-				user_id = 1;
 				__set_FAULTMASK(1);
+				user_id = 1;
 				EEPROM_ErasePage(EEPROM_BASE_ADDRESS_0, EEPROM_Main_Bank_Select);
 				simpleDelay(100000);
 				EEPROM_ProgramByte(USER_ID_ADRESS, EEPROM_Main_Bank_Select, user_id);
-				__set_FAULTMASK(0);
+				
 				LCD_PrintLine(1, 101, 1, u8_to_str(user_id,buffer));
 				voltage_id = Load_from_EEPROM();
 		
 				X = voltage_id.X;
 				Y = voltage_id.Y;
 				Z = voltage_id.Z;
+				
+				__set_FAULTMASK(0);
 				
 				DAC2_SetData(DataByte(X,Y,Z));
 				LCD_PrintLine(3, 10, 1,u8_to_str(X,buffer));

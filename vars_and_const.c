@@ -11,6 +11,7 @@ uint8_t X ;
 uint8_t Y ;
 uint8_t Z ;
 uint8_t user_id;
+uint8_t last_user_id;
 uint8_t id;
 uint32_t ZERO = 0; 
 uint32_t ONE = 1;
@@ -32,7 +33,7 @@ uint32_t VALUE_Z2_ADRESS  = EEPROM_BASE_ADDRESS_2 + 0x0C;  // 0x08008018
 
 //buffers
 char buffer[4];
-uint8_t data[30];  //uart
+uint8_t data[34];  //uart
 
 
 /* definition of stucts*/

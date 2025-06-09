@@ -517,6 +517,16 @@
               <FileType>5</FileType>
               <FilePath>.\buttons.h</FilePath>
             </File>
+            <File>
+              <FileName>timer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\timer.h</FilePath>
+            </File>
+            <File>
+              <FileName>timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\timer.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -606,6 +616,12 @@
         </targetInfos>
       </component>
       <component Cclass="Drivers" Cgroup="RST_CLK" Cvendor="Milandr" Cversion="2.1.0i" condition="CON_MDR32FxQI">
+        <package name="MDR32FxQI" schemaVersion="1.2" url="" vendor="Milandr" version="1.2.0"/>
+        <targetInfos>
+          <targetInfo name="Target 1"/>
+        </targetInfos>
+      </component>
+      <component Cclass="Drivers" Cgroup="TIMER" Cvendor="Milandr" Cversion="2.2.0i" condition="CON_MDR32FxQI">
         <package name="MDR32FxQI" schemaVersion="1.2" url="" vendor="Milandr" version="1.2.0"/>
         <targetInfos>
           <targetInfo name="Target 1"/>

@@ -15,6 +15,7 @@ extern uint8_t X;
 extern uint8_t Y;
 extern uint8_t Z;
 extern uint8_t user_id;
+extern uint8_t last_user_id;
 extern uint8_t id;
 extern uint16_t lvl;
 extern uint32_t USER_ID_ADRESS;
@@ -27,7 +28,7 @@ extern uint32_t VALUE_Z2_ADRESS;
 extern uint32_t ZERO;
 extern uint32_t ONE;
 extern uint32_t TWO;
-extern uint8_t data[30];  
+extern uint8_t data[34];  
 extern char buffer[4];
 
 /* declaration of stucts*/

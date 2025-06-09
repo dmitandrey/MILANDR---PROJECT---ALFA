@@ -16,7 +16,7 @@ void Delay(unsigned int delayTime)
 
 VOLTAGE_USERID Load_from_EEPROM()
 {	  
-		__set_FAULTMASK(1); 
+		//__set_FAULTMASK(1); 
 		VOLTAGE_USERID volt;
 		uint32_t BankSelector;
 		BankSelector = EEPROM_Main_Bank_Select;
@@ -52,7 +52,7 @@ VOLTAGE_USERID Load_from_EEPROM()
 		volt.Y = 0;
 		volt.Z = 0;
 		}
-	__set_FAULTMASK(0);
+	//__set_FAULTMASK(0);
 	return volt;
 	
 }

@@ -11,6 +11,7 @@
 #include "MDR32FxQI_eeprom.h"
 #include <SEGGER_RTT.h>
 #include <SEGGER_RTT_Conf.h>
+#include "timer.h"
 
 #include <stdio.h>
 #include <stdint.h>
@@ -51,7 +52,9 @@ int main(void)
 		LCD_PrintLine(1, 10, 1, "CURRENT USER:");
 		LCD_PrintLine(2, 10, 1, "CURRENT V:");
 	
+		__set_FAULTMASK(1);
 		voltage_id = Load_from_EEPROM();
+		__set_FAULTMASK(0);
 		
 		X = voltage_id.X;
 		Y = voltage_id.Y;
@@ -68,6 +71,8 @@ int main(void)
 		mode = FIRST;
 		conf = CONF;
 		
+		timer_ini();
+		
     while(1)
     {
 			ButtonsPolling();
@@ -82,6 +87,7 @@ int main(void)
 					case CONF:
 						while (1)
 						{	
+							
 							simpleDelay(100000);
 							LCD_PrintLine(4, 10, 1, "^");	
 							ButtonsPolling();
@@ -110,6 +116,7 @@ int main(void)
 					case CONF:
 						while (1)
 						{	
+							
 							simpleDelay(100000);
 							LCD_PrintLine(4, 24, 1, "^");
 							ButtonsPolling();
@@ -136,6 +143,7 @@ int main(void)
 					case CONF:
 						while (1)
 						{	
+							
 							simpleDelay(100000);
 							LCD_PrintLine(4, 31, 1, "^");
 							ButtonsPolling();

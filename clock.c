@@ -26,6 +26,7 @@ void clock_ini(void){
 											RST_CLK_PCLK_PORTE|
 											RST_CLK_PCLK_UART1|
 											RST_CLK_PCLK_DAC|
-											RST_CLK_PCLK_EEPROM
+											RST_CLK_PCLK_EEPROM|
+											RST_CLK_PCLK_TIMER1
 										), ENABLE);
 }
