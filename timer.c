@@ -2,6 +2,7 @@
 #include "uart.h"
 #include "MDR32FxQI_uart.h"
 #include "vars_and_const.h"
+#include "adc.h"
 
 void timer_ini(void){
 	TIMER_CntInitTypeDef timer_struct;
@@ -33,6 +34,9 @@ void Timer1_IRQHandler()
 				}
 			else
 				{ 
+					uint16_t adc_volt = ADC_ReadChannel();
+					debug(adc_volt); 
+					float_voltage = (adc_volt/(float)4095)* 3.29;
 					build_json();
 					UART1_SendDataFIFO(data, sizeof(data) - 1);
 				}

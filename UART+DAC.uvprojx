@@ -527,6 +527,16 @@
               <FileType>1</FileType>
               <FilePath>.\timer.c</FilePath>
             </File>
+            <File>
+              <FileName>adc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\adc.h</FilePath>
+            </File>
+            <File>
+              <FileName>adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\adc.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -588,6 +598,12 @@
     <apis/>
     <components>
       <component Cclass="Device" Cgroup="Startup" Cvendor="Milandr" Cversion="2.1.0i" condition="CON_MDR32F9Q2I">
+        <package name="MDR32FxQI" schemaVersion="1.2" url="" vendor="Milandr" version="1.2.0"/>
+        <targetInfos>
+          <targetInfo name="Target 1"/>
+        </targetInfos>
+      </component>
+      <component Cclass="Drivers" Cgroup="ADC" Cvendor="Milandr" Cversion="2.1.0i" condition="CON_MDR32FxQI">
         <package name="MDR32FxQI" schemaVersion="1.2" url="" vendor="Milandr" version="1.2.0"/>
         <targetInfos>
           <targetInfo name="Target 1"/>

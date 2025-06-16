@@ -17,6 +17,8 @@ uint32_t ZERO = 0;
 uint32_t ONE = 1;
 uint32_t TWO = 2;
 
+float float_voltage;
+
 #define EEPROM_BASE_ADDRESS_0  0x08007000
 #define EEPROM_BASE_ADDRESS_1  0x08008000
 #define EEPROM_BASE_ADDRESS_2  0x08009000

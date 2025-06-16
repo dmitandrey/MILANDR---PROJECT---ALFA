@@ -6,4 +6,5 @@
 void uart_ini(void);
 void UART1_SendDataFIFO(uint8_t *data, uint16_t length);
 void build_json(void); 
+void debug(uint16_t value); 
 #endif

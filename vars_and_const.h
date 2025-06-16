@@ -30,6 +30,7 @@ extern uint32_t ONE;
 extern uint32_t TWO;
 extern uint8_t data[34];  
 extern char buffer[4];
+extern float float_voltage;
 
 /* declaration of stucts*/
 extern PORT_InitTypeDef PortInit;

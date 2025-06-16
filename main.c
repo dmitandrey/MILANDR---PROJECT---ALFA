@@ -12,6 +12,7 @@
 #include <SEGGER_RTT.h>
 #include <SEGGER_RTT_Conf.h>
 #include "timer.h"
+#include "adc.h"
 
 #include <stdio.h>
 #include <stdint.h>
@@ -42,11 +43,14 @@ int main(void)
 		
 		dac_ini();
 	
+		adc_ini();
+	
 		uart_ini();
 	
 		LCD_ini();
 		
 		LCD_Clear();
+		
 	
 		LCD_SetPosition(0, 0);
 		LCD_PrintLine(1, 10, 1, "CURRENT USER:");

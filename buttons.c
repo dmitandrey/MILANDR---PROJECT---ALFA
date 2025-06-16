@@ -97,9 +97,8 @@ void ButtonsPolling(void)
 				Y = voltage_id.Y;
 				Z = voltage_id.Z;
 				
-				__set_FAULTMASK(0);
-				
 				DAC2_SetData(DataByte(X,Y,Z));
+				__set_FAULTMASK(0);
 				LCD_PrintLine(3, 10, 1,u8_to_str(X,buffer));
 				LCD_PrintLine(3, 17, 1,".");
 				LCD_PrintLine(3, 24, 1,u8_to_str(Y,buffer));
@@ -168,9 +167,9 @@ void ButtonsPolling(void)
 				Y = voltage_id.Y;
 				Z = voltage_id.Z;
 				
+				DAC2_SetData(DataByte(X,Y,Z));
 				__set_FAULTMASK(0);
 				
-				DAC2_SetData(DataByte(X,Y,Z));
 				LCD_PrintLine(3, 10, 1,u8_to_str(X,buffer));
 				LCD_PrintLine(3, 17, 1,".");
 				LCD_PrintLine(3, 24, 1,u8_to_str(Y,buffer));
